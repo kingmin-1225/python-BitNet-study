@@ -21,13 +21,38 @@
 - **Dataset**: Shakespeare (Tiny-scale), WikiText (Planned)
 
 ## Project Structure
-├── models/  
-│   ├── bitnet_llama.py        # Llama 기반 1.58-bit 구현  
-│   └── bitnet_transformer.py  # 기초 Transformer 기반 1.58-bit 구현  
-├── data.py                    # Vocab 및 데이터 전처리  
-├── train.py                   # 통합 학습 스크립트  
-├── generate.py                # 텍스트 생성 테스트  
-└── checkpoints/               # 학습된 모델 저장 폴더  
+```text
+.
+├── models/
+│   ├── bitnet_llama.py        # Llama-based 1.58-bit implementation
+│   └── bitnet_transformer.py  # Vanilla Transformer-based 1.58-bit implementation
+├── data/
+│   └── vocab.pkl              # Tokenizer vocabulary file
+├── checkpoints/               # Directory for saved model weights
+├── data.py                    # Data loading and preprocessing logic
+├── train.py                   # Unified training script
+├── generate.py                # Text generation/inference script
+└── README.md
+```
+
+## Usage
+- **Train**
+  ```
+  python train.py
+  ```
+  - `--model`: 학습할 모델 선택 (기본값: `llama`)
+  - `--save_dir`: 체크포인트 저장 경로 (기본값: `checkpoints`)
+  - `--batch_size`: batch_size (기본값: `32`)
+  - `--max_iters`: 반복 횟수 (기본값: `3000`)
+  - `--lr`: 학습률 (기본값: `2e-4`)
+- **Generate**
+  ```
+  python generate.py
+  ```
+  - `--model`: 사용할 모델 선택 (기본값: `llama`)
+  - `--save_dir`: 체크포인트 저장 경로 (기본값: `checkpoints`)
+  - `--batch_size`: batch_size (기본값: `32`)
+  - `--lr`: 학습률 (기본값: `2e-4`)
 
 ## Comparison
 | Model | Param Count | VRAM Usage | Training Loss (3k iters) |

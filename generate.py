@@ -19,19 +19,18 @@ def main():
     decode = lambda l: ''.join([itos[i] for i in l])
 
     parser = argparse.ArgumentParser(description="BitNet Training Script")
-    parser.add_argument('--model_type', type=str, default='llama', choices=['llama', 'transformer'])
+    parser.add_argument('--model', type=str, default='llama', choices=['llama', 'transformer'])
     parser.add_argument('--save_dir', type=str, default='checkpoints', help='모델을 저장할 폴더명')
-    parser.add_argument('--batch_size', type=int, default=64)
-    parser.add_argument('--max_iters', type=int, default=3000)
+    parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--lr', type=float, default=2e-4)
     args = parser.parse_args()
     
     save_dir = 'checkpoints'
-    save_name = f"bitnet_{args.model_type}_lr{args.lr}_bs{args.batch_size}.pth"
+    save_name = f"bitnet_{args.model}_lr{args.lr}_bs{args.batch_size}.pth"
     model_path = os.path.join(save_dir, save_name)
 
     # 모델 초기화
-    if args.model_type == 'llama':
+    if args.model == 'llama':
         model = BitLLaMA(vocab_size).to(device)
     else:
         model = BitNetLM(vocab_size).to(device)
