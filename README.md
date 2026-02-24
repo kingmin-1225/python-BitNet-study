@@ -27,9 +27,10 @@
 │   ├── bitnet_llama.py        # Llama-based 1.58-bit implementation
 │   └── bitnet_transformer.py  # Vanilla Transformer-based 1.58-bit implementation
 ├── data/
+│   ├── data.py                # Data preprocessing & Vocab
 │   └── vocab.pkl              # Tokenizer vocabulary file
 ├── checkpoints/               # Directory for saved model weights
-├── data.py                    # Data loading and preprocessing logic
+├── utils.py                   # BitLinear implementation
 ├── train.py                   # Unified training script
 ├── generate.py                # Text generation/inference script
 └── README.md

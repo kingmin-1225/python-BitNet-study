@@ -20,7 +20,7 @@ def main():
         print(f"Created directory: {args.save_dir}")
 
     # 2. 데이터 준비 및 장치 설정
-    data, vocab_size, _, _ = get_data_and_vocab('vocab.pkl')
+    data, vocab_size, _, _ = get_data_and_vocab('data/vocab.pkl')
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
     # 3. 모델 초기화

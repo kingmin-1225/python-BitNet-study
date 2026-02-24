@@ -3,7 +3,7 @@ import torch
 import pickle
 import os
 
-def get_data_and_vocab(save_path='vocab.pkl'):
+def get_data_and_vocab(save_path='data/vocab.pkl'):
     url = "https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt"
     text = requests.get(url).text
 
