@@ -56,7 +56,7 @@ class BitNetLM(nn.Module):
         self.position_embedding_table = nn.Embedding(256, n_embd) # max_len=256
         self.blocks = nn.Sequential(*[BitBlock(n_embd, n_head) for _ in range(n_layer)])
         self.ln_f = nn.LayerNorm(n_embd)
-        self.lm_head = nn.Linear(n_embd, vocab_size) # 마지막 출력은 일반 Linear 권장
+        self.lm_head = BitLinear(n_embd, vocab_size)
 
     def forward(self, idx, targets=None):
         B, T = idx.shape

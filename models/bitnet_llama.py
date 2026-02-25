@@ -110,7 +110,7 @@ class BitLLaMA(nn.Module):
         self.tok_embeddings = nn.Embedding(vocab_size, n_embd)
         self.layers = nn.ModuleList([BitDecoderBlock(n_embd, n_head, max_seq_len) for _ in range(n_layer)])
         self.norm = RMSNorm(n_embd)
-        self.output = nn.Linear(n_embd, vocab_size, bias=False)
+        self.output = BitLinear(n_embd, vocab_size, bias=False)
 
     def forward(self, tokens, targets=None):
         B, T = tokens.shape

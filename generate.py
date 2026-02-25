@@ -8,7 +8,7 @@ from models.bitnet_transformer import BitNetLM
 def main():
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-    with open('vocab.pkl', 'rb') as f:
+    with open('data/vocab.pkl', 'rb') as f:
         vocab_info = pickle.load(f)
     
     stoi = vocab_info['stoi']
